@@ -13,6 +13,8 @@ before_install:
 before_script:
   - pip install --user codecov
   
+script: mvn clean install
+  
 after_success:
   - codecov
   
