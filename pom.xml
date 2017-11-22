@@ -13,7 +13,7 @@
         <module>discoveryservice</module>
         <module>gatewayservice</module>
         <module>todoservice</module>                
-        <module>searchservice</module>                
-        <module>msgservice</module>        
+<!--        <module>searchservice</module>                
+        <module>msgservice</module>        -->
     </modules>
 </project>
