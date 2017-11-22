@@ -13,10 +13,10 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 	
 - __Todo Service__:	
 	- __Swagger:__
-    	- [API-Docs](http://localhost:8123/v2/api-docs)
-    	- [Web UI](http://localhost:8123/swagger-ui.html)
+    	- [API-Docs](http://localhost:8121/v2/api-docs)
+    	- [Web UI](http://localhost:8121/swagger-ui.html)
 	- __H2:__
-    	- [Web Console](http://localhost:8123/h2-console/)
+    	- [Web Console](http://localhost:8121/h2-console/)
 
 ### References
 coming soon...
