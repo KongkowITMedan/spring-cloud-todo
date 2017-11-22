@@ -1,5 +1,7 @@
-## [Spring](https://spring.io/) Cloud Todo
+## [Spring](https://spring.io/) Cloud Todo Apps
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
+[![Build Status](https://travis-ci.org/KongkowITMedan/spring-cloud-todo.svg?branch=master)](https://travis-ci.org/KongkowITMedan/spring-cloud-todo)
+
 
 These are the backend services for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-todo).
 
