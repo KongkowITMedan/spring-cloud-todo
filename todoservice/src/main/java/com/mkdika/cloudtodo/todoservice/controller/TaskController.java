@@ -43,34 +43,30 @@ public class TaskController {
         }
     }
 
-     @ApiOperation(
+    @ApiOperation(
             value = "Retrieve Task by ID.",
             notes = "Not available.",
             produces = "application/json")
     @RequestMapping(method = GET, value = "/{id}")
     public ResponseEntity getTaskById(@PathVariable Integer id) {
         Optional<Task> task = repository.findById(id);
-        if (task != null) {
+        if (task.isPresent()) {
             return new ResponseEntity(task, HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @ApiOperation(
             value = "Create or Update Task.",
             notes = "Not available.",
             produces = "application/json")
     @RequestMapping(method = {POST, PUT})
     public ResponseEntity addUpdateTask(@Valid @RequestBody Task task) {
-        try {                                                            
-            repository.save(task);
-            return new ResponseEntity(HttpStatus.OK);
-        } catch (Exception ex) {
-            return new ResponseEntity(ex,HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        repository.save(task);
+        return new ResponseEntity(HttpStatus.OK);
     }
-    
+
     @ApiOperation(
             value = "Delete Task by ID.",
             notes = "Not available.",
@@ -78,7 +74,7 @@ public class TaskController {
     @RequestMapping(method = DELETE, value = "/{id}")
     public ResponseEntity deleteTask(@PathVariable Integer id) {
         Optional<Task> task = repository.findById(id);
-        if (task != null) {
+        if (task.isPresent()) {
             repository.delete(task.get());
             return new ResponseEntity(HttpStatus.OK);
         } else {
