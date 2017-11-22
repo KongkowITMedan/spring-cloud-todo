@@ -20,10 +20,10 @@ import lombok.NoArgsConstructor;
 public class Task implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     Integer id;
+    
     String content;
-    boolean isComplete;
-    boolean isEditable;
-
+    Boolean isComplete;
+    Boolean isEditable;
 }
