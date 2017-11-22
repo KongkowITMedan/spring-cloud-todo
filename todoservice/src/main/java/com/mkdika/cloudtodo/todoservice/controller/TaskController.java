@@ -2,6 +2,7 @@ package com.mkdika.cloudtodo.todoservice.controller;
 
 import com.mkdika.cloudtodo.todoservice.model.Task;
 import com.mkdika.cloudtodo.todoservice.repository.TaskRepository;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
@@ -28,6 +29,10 @@ public class TaskController {
     @Autowired
     private TaskRepository repository;
 
+    @ApiOperation(
+            value = "Retrieve all Task.",
+            notes = "Not available.",
+            produces = "application/json")
     @RequestMapping(method = GET)
     public ResponseEntity getAllTask() {
         List<Task> list = (List<Task>) repository.findAll();
@@ -38,6 +43,10 @@ public class TaskController {
         }
     }
 
+     @ApiOperation(
+            value = "Retrieve Task by ID.",
+            notes = "Not available.",
+            produces = "application/json")
     @RequestMapping(method = GET, value = "/{id}")
     public ResponseEntity getTaskById(@PathVariable Integer id) {
         Optional<Task> task = repository.findById(id);
@@ -48,6 +57,10 @@ public class TaskController {
         }
     }
     
+    @ApiOperation(
+            value = "Create or Update Task.",
+            notes = "Not available.",
+            produces = "application/json")
     @RequestMapping(method = {POST, PUT})
     public ResponseEntity addUpdateTask(@Valid @RequestBody Task task) {
         try {                                                            
@@ -58,6 +71,10 @@ public class TaskController {
         }
     }
     
+    @ApiOperation(
+            value = "Delete Task by ID.",
+            notes = "Not available.",
+            produces = "application/json")
     @RequestMapping(method = DELETE, value = "/{id}")
     public ResponseEntity deleteTask(@PathVariable Integer id) {
         Optional<Task> task = repository.findById(id);
