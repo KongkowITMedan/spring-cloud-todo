@@ -1,6 +1,7 @@
 ## [Spring](https://spring.io/) Cloud Todo Apps
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
 [![Build Status](https://travis-ci.org/KongkowITMedan/spring-cloud-todo.svg?branch=master)](https://travis-ci.org/KongkowITMedan/spring-cloud-todo)
+[![codecov](https://codecov.io/gh/KongkowITMedan/spring-cloud-todo/branch/master/graph/badge.svg)](https://codecov.io/gh/KongkowITMedan/spring-cloud-todo)
 [![codebeat badge](https://codebeat.co/badges/74889632-eba3-41bc-9c6f-9d68db38c2a1)](https://codebeat.co/projects/github-com-kongkowitmedan-spring-cloud-todo-master)
 
 
