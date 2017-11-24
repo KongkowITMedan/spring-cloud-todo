@@ -12,7 +12,9 @@
         <module>configservice</module>
         <module>discoveryservice</module>
         <module>gatewayservice</module>
-        <module>todoservice</module>                
+        <module>todoservice</module>    
+        <module>audittrailservice</module>    
+                    
 <!--        <module>searchservice</module>                
         <module>msgservice</module>        -->
     </modules>
