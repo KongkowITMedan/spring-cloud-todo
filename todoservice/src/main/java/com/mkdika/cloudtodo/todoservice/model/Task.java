@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.ResourceSupport;
 
 /**
  *
@@ -17,13 +19,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Task implements Serializable {
+public class Task extends ResourceSupport implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    Integer id;
+    Integer uid;
     
     String content;
     Boolean isComplete;
-    Boolean isEditable;
+    Boolean isEditable;           
 }

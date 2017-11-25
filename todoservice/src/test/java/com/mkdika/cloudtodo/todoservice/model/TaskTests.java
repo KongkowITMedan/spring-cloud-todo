@@ -11,7 +11,7 @@ public class TaskTests {
 
     @Test
     public void newInstanceNoArgConst() {
-        Assert.assertNotNull(new Task());
+        Assert.assertNotNull(new Task());                
     }
 
     @Test
@@ -31,11 +31,11 @@ public class TaskTests {
     @Test
     public void testDataEntity() {
         Task task = new Task();
-        task.setId(7);
+        task.setUid(7);
         task.setContent("Testing Kerja");
         task.setIsComplete(true);
         task.setIsEditable(false);
-        Assert.assertNotNull(task.getId());
+        Assert.assertNotNull(task.getUid());
         Assert.assertEquals("Testing Kerja", task.getContent());
         Assert.assertFalse(task.getIsEditable());
         Assert.assertTrue(task.getIsComplete());
