@@ -8,16 +8,16 @@
 These are the backend services for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-todo).
 
 ### Framework & Libraries
-- [Java 8 (JDK 8u131)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [Java 8 (JDK 8u131 or above)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
 
 ### Local Settings
-- OS Environment variable:
+- Export OS level Environment variable:
 	- `TODO_EMAIL_USERNAME` , email account username for send email notification.
 	- `TODO_EMAIL_PASSWORD` , email account password for send email notification.
-- Email Setting:
-	- Set the email config in `msg-service.properties` file, at `todo email client setup` section.
+- Other Email Settings:
+	- Set the email config in `msg-service.properties` file, at `#todo email client setup` section.
 	
-
 
 ### Local URL & API Test
 - __Discovery Service__:
@@ -32,5 +32,10 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 
 
 ### References
-coming soon...
-
+- Spring Cloud
+	- [Spring Cloud PiggyMetrics](https://github.com/sqshq/PiggyMetrics)
+- Spring AMQP
+	- [RabbitMQ Message Dispatching with Spring AMQP](http://www.baeldung.com/rabbitmq-spring-amqp)	
+- Spring Data Elasticsearch:
+	- [Introduction to Spring Data Elasticsearch](http://www.baeldung.com/spring-data-elasticsearch-tutorial)
+	- [First Step with Spring Boot and Elasticsearch](https://dzone.com/articles/first-step-spring-boot-and)
