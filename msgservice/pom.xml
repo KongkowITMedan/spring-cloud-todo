@@ -4,17 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mkdika.cloudtodo</groupId>
-    <artifactId>todoservice</artifactId>
+    <artifactId>msgservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>todoservice</name>
+    <name>msgservice</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.M6</version>
+        <version>2.0.0.M7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Finchley.M4</spring-cloud.version>
+        <spring-cloud.version>Finchley.M5</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -84,6 +84,13 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.5</version>
+        </dependency>
+        
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -94,10 +101,17 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.4.0</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.javaconfig</groupId>
+            <artifactId>spring-javaconfig</artifactId>
+            <version>1.0.0.m3</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 
@@ -178,4 +192,6 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
+
 </project>

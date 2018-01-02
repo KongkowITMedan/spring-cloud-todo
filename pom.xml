@@ -14,8 +14,8 @@
         <module>gatewayservice</module>
         <module>todoservice</module>    
         <module>audittrailservice</module>    
+        <module>msgservice</module>    
                     
-<!--        <module>searchservice</module>                
-        <module>msgservice</module>        -->
+<!--        <module>searchservice</module>   -->
     </modules>
 </project>

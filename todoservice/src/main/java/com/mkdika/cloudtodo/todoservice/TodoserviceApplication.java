@@ -12,8 +12,8 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @EnableFeignClients
 @EnableCircuitBreaker
 @SpringBootApplication
-public class TodoserviceApplication {
+public class TodoserviceApplication {   
     public static void main(String[] args) {
-        SpringApplication.run(TodoserviceApplication.class, args);
+        SpringApplication.run(TodoserviceApplication.class, args);      
     }
 }

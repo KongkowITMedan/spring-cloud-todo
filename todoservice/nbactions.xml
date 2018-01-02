@@ -12,6 +12,7 @@
             <properties>
                 <exec.args>-classpath %classpath com.mkdika.cloudtodo.todoservice.TodoserviceApplication</exec.args>
                 <exec.executable>java</exec.executable>
+                
             </properties>
         </action>
         <action>
