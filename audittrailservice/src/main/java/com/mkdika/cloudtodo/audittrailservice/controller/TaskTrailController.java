@@ -54,7 +54,7 @@ public class TaskTrailController {
             value = "Create new audit trail log.",
             notes = "Not available.",
             produces = "application/json")
-    @RequestMapping(method = {POST})
+    @RequestMapping(method = POST)
     public ResponseEntity createAuditTrail(@Valid @RequestBody TaskTrail taskTrail) {
         repository.save(taskTrail);
         return new ResponseEntity(HttpStatus.OK);

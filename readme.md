@@ -36,6 +36,8 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 	- [Spring Cloud PiggyMetrics](https://github.com/sqshq/PiggyMetrics)
 - Spring AMQP
 	- [RabbitMQ Message Dispatching with Spring AMQP](http://www.baeldung.com/rabbitmq-spring-amqp)	
-- Spring Data Elasticsearch:
+	- [Event-Driven Microservices Using Spring Cloud Stream and RabbitMQ](https://dzone.com/articles/event-driven-microservices-using-spring-cloud-stre)
+- Spring Data & Elasticsearch:
+	- [The Persistence Layer with Spring Data JPA](http://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
 	- [Introduction to Spring Data Elasticsearch](http://www.baeldung.com/spring-data-elasticsearch-tutorial)
 	- [First Step with Spring Boot and Elasticsearch](https://dzone.com/articles/first-step-spring-boot-and)
