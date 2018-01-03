@@ -14,15 +14,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class EmailService {
-    
-    @Value("${todo.email.port}")
-    private int emailPort;
-
-    @Value("${todo.email.tls}")
-    private boolean emailTls;
 
     @Value("${todo.email.host}")
     private String emailHost;
+
+    @Value("${todo.email.port}")
+    private int emailPort;
 
     @Value("${todo.email.from}")
     private String emailFrom;
@@ -32,18 +29,19 @@ public class EmailService {
 
     @Value("${todo.email.password}")
     private String emailPassword;
-    
+
     private Email email;
 
     public boolean sendEmail(EmailMessage emailMsg) throws EmailException {
+
         email = new SimpleEmail();
-        email.setSmtpPort(emailPort);
-        email.setTLS(emailTls);
-        email.setDebug(false);
+        email.setAuthenticator(new DefaultAuthenticator(emailUsername, emailPassword));
+        email.setDebug(true);
         email.setHostName(emailHost);
-        email.setFrom(emailFrom);
-        email.setAuthenticator(new DefaultAuthenticator(emailUsername,
-                emailPassword));
+        email.setSmtpPort(emailPort);
+        email.setSSLOnConnect(true);
+        email.setFrom(emailUsername, "SysbotTodo");
+
         email.addTo(emailMsg.getToAddress());
         email.setSubject(emailMsg.getSubject());
         email.setMsg(emailMsg.getContent());

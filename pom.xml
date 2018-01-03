@@ -11,11 +11,11 @@
     <modules>
         <module>configservice</module>
         <module>discoveryservice</module>
-        <module>gatewayservice</module>
-        <module>todoservice</module>    
+        <module>gatewayservice</module>       
         <module>audittrailservice</module>    
         <module>msgservice</module>    
+        <module>todoservice</module>    
                     
-<!--        <module>searchservice</module>   -->
+        <!--        <module>searchservice</module>   -->
     </modules>
 </project>

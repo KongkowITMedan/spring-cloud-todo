@@ -17,20 +17,23 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 	- `TODO_EMAIL_PASSWORD` , email account password for send email notification.
 - Other Email Settings:
 	- Set the email config in `msg-service.properties` file, at `#todo email client setup` section.
-	
+- __Vue Todo__ - Front End:
+	- [README](vue-todo/README.md)
 
 ### Local URL & API Test
 - __Discovery Service__:
 	- [Web Panel](http://localhost:8761/)
 	
 - __Todo Service__:	
+	- __HAL Browser:__
+		- 
+
 	- __Swagger:__
     	- [API-Docs](http://localhost:8121/v2/api-docs)
     	- [Web UI](http://localhost:8121/swagger-ui.html)
 	- __H2:__
     	- [Web Console](http://localhost:8121/h2-console/)    
-- __Vue Todo__ - Front End:
-	- [README](vue-todo/README.md)
+
 
 
 ### References

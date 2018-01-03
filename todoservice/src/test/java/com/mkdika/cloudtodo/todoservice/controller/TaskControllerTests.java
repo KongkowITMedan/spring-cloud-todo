@@ -44,9 +44,7 @@ import org.springframework.web.context.WebApplicationContext;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TaskControllerTests {
 
-    private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
-            MediaType.APPLICATION_JSON.getSubtype(),
-            Charset.forName("utf8"));
+    private MediaType contentType = new MediaType("application", "json", Charset.forName("UTF-8"));
 
     private MockMvc mockMvc;
 

@@ -1,6 +1,6 @@
 # vue-kotlin-todo
 
-> demo vue todo app with vue-router & vuex and [kotlin-todo](https://github.com/KongkowITMedan/kotlin-todo) as backend service
+> demo vue todo app with vue-router & vuex and [Spring-Cloud-Todo](https://github.com/KongkowITMedan/spring-cloud-todo) microservice as backend.
 
 ## Build Setup
 
