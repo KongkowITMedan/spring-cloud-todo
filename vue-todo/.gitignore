@@ -11,3 +11,5 @@ yarn-error.log
 *.ntvs*
 *.njsproj
 *.sln
+/src/nbproject/private/
+/vue-tudo/nbproject/private/
