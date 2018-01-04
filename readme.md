@@ -41,7 +41,14 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 	- __H2:__
     	- [Web Console](http://localhost:8121/h2-console/), open H2 web console.
 
-
+### Install & Run Application
+- Running Application Order:
+	1. `configservice`
+	2. `discoveryservice`
+	3. `gatewayservice`
+	4. `audittrailservice`
+	5. `msgservice`
+	6. `todoservice`
 
 ### References
 - Spring Boot

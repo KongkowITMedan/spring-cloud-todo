@@ -3,9 +3,9 @@
     <div class="hero-head">
       <header class="nav">
         <div class="container">
-          <div class="nav-right nav-menu">
+          <div class="nav-right">
             <div class="nav-item">
-              <button @click="addTask" class="button is-info is-inverted">New Task</button>
+              <button @click="addTask" class="button is-info is-inverted">New</button>
             </div>
           </div>
         </div>
