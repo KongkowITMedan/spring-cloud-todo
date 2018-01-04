@@ -1,14 +1,14 @@
-INSERT INTO task (uid, content, is_complete, is_editable) 
-VALUES (1,'Belanja Bulanan',false,true);
+INSERT INTO task (id, content, complete, editable) 
+VALUES (1,'Belanja Bulanan',false,false);
 
-INSERT INTO task (uid, content, is_complete, is_editable) 
-VALUES (2,'Bayar Indihome',false,true);
+INSERT INTO task (id, content, complete, editable) 
+VALUES (2,'Bayar Indihome',false,false);
 
-INSERT INTO task (uid, content, is_complete, is_editable) 
-VALUES (3,'Bayar Tagihan CC',false,true);
+INSERT INTO task (id, content, complete, editable) 
+VALUES (3,'Bayar Tagihan CC',true,false);
 
-INSERT INTO task (uid, content, is_complete, is_editable) 
-VALUES (4,'Perbaiki Wastafel',false,true);
+INSERT INTO task (id, content, complete, editable) 
+VALUES (4,'Perbaiki Wastafel',false,false);
 
-INSERT INTO task (uid, content, is_complete, is_editable) 
-VALUES (5,'Service Mobil',false,true);
+INSERT INTO task (id, content, complete, editable) 
+VALUES (5,'Service Mobil',true,false);

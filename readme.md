@@ -46,6 +46,7 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 ### References
 - Spring Boot
 	- [Spring Boot Production-ready Features Endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
+	- [Enabling Cross Origin Requests for a RESTful Web Service](https://spring.io/guides/gs/rest-service-cors/)
 - Spring Cloud
 	- [Spring Cloud PiggyMetrics](https://github.com/sqshq/PiggyMetrics)
 - Spring AMQP

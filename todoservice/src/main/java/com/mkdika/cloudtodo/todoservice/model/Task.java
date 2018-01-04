@@ -1,6 +1,8 @@
 package com.mkdika.cloudtodo.todoservice.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +22,13 @@ import org.springframework.hateoas.ResourceSupport;
 @AllArgsConstructor
 public class Task extends ResourceSupport implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    Integer uid;
+    @Id    
+    @Column(name = "id")
+    @JsonProperty("id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)    
+    Integer tid;
     
     String content;
-    Boolean isComplete;
-    Boolean isEditable;           
+    Boolean complete;
+    Boolean editable;            
 }

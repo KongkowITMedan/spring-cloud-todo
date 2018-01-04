@@ -40,18 +40,68 @@ public class TaskController {
     @ApiOperation(
             value = "Retrieve all Task.",
             notes = "Not available.",
-            produces = "application/json")
+            produces = "application/json")    
     @RequestMapping(method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllTask() {
         List<Task> list = (List<Task>) repository.findAll();
         if (list.size() > 0) {
             list = list.stream().map(l -> {
                 l.add(linkTo(TaskController.class)
-                        .slash(l.getUid())
+                        .slash(l.getTid())
                         .slash("trail")
                         .withRel("trail"));
                 l.add(linkTo(TaskController.class)
-                        .slash(l.getUid())
+                        .slash(l.getTid())
+                        .withSelfRel());
+                return l;
+            }).collect(Collectors.toList());
+
+            return new ResponseEntity(list, HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @ApiOperation(
+            value = "Retrieve all Inprogress Task.",
+            notes = "Not available.",
+            produces = "application/json")    
+    @RequestMapping(method = GET, value = "/inprogress",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getInprogressTask() {
+        List<Task> list = (List<Task>) repository.findByCompleteFalse();
+        if (list.size() > 0) {
+            list = list.stream().map(l -> {
+                l.add(linkTo(TaskController.class)
+                        .slash(l.getTid())
+                        .slash("trail")
+                        .withRel("trail"));
+                l.add(linkTo(TaskController.class)
+                        .slash(l.getTid())
+                        .withSelfRel());
+                return l;
+            }).collect(Collectors.toList());
+
+            return new ResponseEntity(list, HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @ApiOperation(
+            value = "Retrieve all Finished Task.",
+            notes = "Not available.",
+            produces = "application/json")    
+    @RequestMapping(method = GET, value = "/finish",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getFinishTask() {
+        List<Task> list = (List<Task>) repository.findByCompleteTrue();
+        if (list.size() > 0) {
+            list = list.stream().map(l -> {
+                l.add(linkTo(TaskController.class)
+                        .slash(l.getTid())
+                        .slash("trail")
+                        .withRel("trail"));
+                l.add(linkTo(TaskController.class)
+                        .slash(l.getTid())
                         .withSelfRel());
                 return l;
             }).collect(Collectors.toList());
@@ -65,13 +115,13 @@ public class TaskController {
     @ApiOperation(
             value = "Retrieve Task by ID.",
             notes = "Not available.",
-            produces = "application/json")
+            produces = "application/json")    
     @RequestMapping(method = GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getTaskById(@PathVariable Integer id) {
         Task task = repository.findOne(id);
         if (task != null) {
             Link trailLink = linkTo(TaskController.class)
-                    .slash(task.getUid())
+                    .slash(task.getTid())
                     .slash("trail")
                     .withRel("trail");
             task.add(trailLink);
@@ -84,21 +134,21 @@ public class TaskController {
     @ApiOperation(
             value = "Create or Update Task.",
             notes = "Not available.",
-            produces = "application/json")
+            produces = "application/json")    
     @RequestMapping(method = {POST, PUT}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addUpdateTask(@Valid @RequestBody Task task) {
-        if (task.getUid() != null) {
-            Task taskOld = repository.findOne(task.getUid());
+        if (task.getId() != null) {
+            Task taskOld = repository.findOne(task.getTid());
 //            trailService.createTaskTrail(new TrailDto(task.getUid(), new Date(), compareOldNewTask(taskOld.get(), task)));
         }
         repository.save(task);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(task,HttpStatus.OK);
     }
 
     @ApiOperation(
             value = "Delete Task by ID.",
             notes = "Not available.",
-            produces = "application/json")
+            produces = "application/json")    
     @RequestMapping(method = DELETE, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteTask(@PathVariable Integer id) {
         Task task = repository.findOne(id);
@@ -113,7 +163,7 @@ public class TaskController {
     @ApiOperation(
             value = "Retrieve all Trail by Task ID.",
             notes = "Not available.",
-            produces = "application/json")
+            produces = "application/json")    
     @RequestMapping(method = GET, value = "/{id}/trail", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getTrail(@PathVariable Integer id) {
         List<TrailDto> trails = trailService.getTaskTrail(id);
@@ -133,18 +183,18 @@ public class TaskController {
             sb.append(taskNew.getContent());
         }
 
-        if (taskNew.getIsEditable().compareTo(taskOld.getIsEditable()) != 0) {
+        if (taskNew.getEditable().compareTo(taskOld.getEditable()) != 0) {
             sb.append(", Editable changed from ");
-            sb.append(taskOld.getIsEditable());
+            sb.append(taskOld.getEditable());
             sb.append(" to ");
-            sb.append(taskNew.getIsEditable());
+            sb.append(taskNew.getEditable());
         }
 
-        if (taskNew.getIsComplete().compareTo(taskOld.getIsComplete()) != 0) {
+        if (taskNew.getComplete().compareTo(taskOld.getComplete()) != 0) {
             sb.append(", Complete changed from ");
-            sb.append(taskOld.getIsComplete());
+            sb.append(taskOld.getComplete());
             sb.append(" to ");
-            sb.append(taskNew.getIsComplete());
+            sb.append(taskNew.getComplete());
         }
         return sb.toString();
     }

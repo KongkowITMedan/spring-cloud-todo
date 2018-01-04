@@ -14,7 +14,7 @@
 
     <div class="hero-body has-text-centered">
       <h1 class="title">Demo ToDo</h1>
-      <h2 class="subtitle">Kongkow IT Meetup #2</h2>
+      <h2 class="subtitle">Vue.Js & Spring Cloud</h2>
     </div>
 
     <div class="hero-foot">

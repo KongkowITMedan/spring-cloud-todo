@@ -31,14 +31,14 @@ public class TaskTests {
     @Test
     public void testDataEntity() {
         Task task = new Task();
-        task.setUid(7);
+        task.setTid(7);
         task.setContent("Testing Kerja");
-        task.setIsComplete(true);
-        task.setIsEditable(false);
-        Assert.assertNotNull(task.getUid());
+        task.setComplete(true);
+        task.setEditable(false);
+        Assert.assertNotNull(task.getTid());
         Assert.assertEquals("Testing Kerja", task.getContent());
-        Assert.assertFalse(task.getIsEditable());
-        Assert.assertTrue(task.getIsComplete());
+        Assert.assertFalse(task.getEditable());
+        Assert.assertTrue(task.getComplete());
         
         Assert.assertNotNull(task.toString());
         Assert.assertNotNull(task.hashCode());
