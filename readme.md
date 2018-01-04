@@ -22,21 +22,30 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 
 ### Local URL & API Test
 - __Discovery Service__:
-	- [Web Panel](http://localhost:8761/)
+	- [Web Panel](http://localhost:8761/), view eureka front page.
 	
-- __Todo Service__:	
-	- __HAL Browser:__
-		- 
-
+- __Todo Service__ (and other related services):	
+	- __Spring Boot Production Ready Endpoints:__
+		- [Information](http://localhost:8121/info), displays application information.
+		- [Environment](http://localhost:8121/env), displays environment properties from Spring.
+		- [Health](http://localhost:8121/health), shows app health information.
+		- [Mappings](http://localhost:8121/mappings), displays mapped web end-point.
+		- [Beans](http://localhost:8121/beans), displays a complete list of all Spring beans within app.
+		- [Config Properties](http://localhost:8121/configprops), displays a collated list of all `@ConfigurationProperties`
+		- [Dump](http://localhost:8121/dump), displays and Performs a thread dump
+		- [Metrics](http://localhost:8121/metrics), shows `metrics` information for the current app.
+		- [Trace](http://localhost:8121/trace), displays last 100 HTTP requests.
 	- __Swagger:__
     	- [API-Docs](http://localhost:8121/v2/api-docs)
-    	- [Web UI](http://localhost:8121/swagger-ui.html)
+    	- [Web UI](http://localhost:8121/swagger-ui.html), view registered web end-point.
 	- __H2:__
-    	- [Web Console](http://localhost:8121/h2-console/)    
+    	- [Web Console](http://localhost:8121/h2-console/), open H2 web console.
 
 
 
 ### References
+- Spring Boot
+	- [Spring Boot Production-ready Features Endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
 - Spring Cloud
 	- [Spring Cloud PiggyMetrics](https://github.com/sqshq/PiggyMetrics)
 - Spring AMQP
