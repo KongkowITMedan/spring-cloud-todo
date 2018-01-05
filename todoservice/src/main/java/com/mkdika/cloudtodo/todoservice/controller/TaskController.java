@@ -174,7 +174,7 @@ public class TaskController {
         }
     }
 
-    private String compareOldNewTask(Task taskOld, Task taskNew) {
+    private String compareTask(Task taskOld, Task taskNew) {
         StringBuilder sb = new StringBuilder();
         if (taskNew.getContent().compareTo(taskOld.getContent()) != 0) {
             sb.append("Content Changed from ");

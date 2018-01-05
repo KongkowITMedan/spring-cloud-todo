@@ -20,12 +20,12 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 - __Vue Todo__ - Front End:
 	- [README](vue-todo/README.md)
 
-### Local URL & API Test
+### Local Endpoints & API Test
 - __Discovery Service__:
 	- [Web Panel](http://localhost:8761/), view eureka front page.
 	
 - __Todo Service__ (and other related services):	
-	- __Spring Boot Production Ready Endpoints:__
+	- __Spring Boot Production Ready:__
 		- [Information](http://localhost:8121/info), displays application information.
 		- [Environment](http://localhost:8121/env), displays environment properties from Spring.
 		- [Health](http://localhost:8121/health), shows app health information.
@@ -53,12 +53,15 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 ### References
 - Spring Boot
 	- [Spring Boot Production-ready Features Endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
-	- [Enabling Cross Origin Requests for a RESTful Web Service](https://spring.io/guides/gs/rest-service-cors/)
+	- [Enabling Cross Origin Requests for a RESTful Web Service](https://spring.io/guides/gs/rest-service-cors/)	
 - Spring Cloud
 	- [Spring Cloud PiggyMetrics](https://github.com/sqshq/PiggyMetrics)
 - Spring AMQP
 	- [RabbitMQ Message Dispatching with Spring AMQP](http://www.baeldung.com/rabbitmq-spring-amqp)	
 	- [Event-Driven Microservices Using Spring Cloud Stream and RabbitMQ](https://dzone.com/articles/event-driven-microservices-using-spring-cloud-stre)
+- Spring Cloud Stream	
+	- [Introduction to Spring Cloud Stream](http://www.baeldung.com/spring-cloud-stream)
+	- [Spring Cloud Stream Reference Guide](https://docs.spring.io/spring-cloud-stream/docs/current/reference/htmlsingle/)
 - Spring Data & Elasticsearch:
 	- [The Persistence Layer with Spring Data JPA](http://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
 	- [Introduction to Spring Data Elasticsearch](http://www.baeldung.com/spring-data-elasticsearch-tutorial)

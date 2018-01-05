@@ -5,7 +5,7 @@
         <div class="container">
           <div class="nav-right">
             <div class="nav-item">
-              <button @click="addTask" class="button is-info is-inverted">New</button>
+              <button @click="addTask" class="button is-info is-inverted">New Task</button>
             </div>
           </div>
         </div>
@@ -14,7 +14,7 @@
 
     <div class="hero-body has-text-centered">
       <h1 class="title">Demo ToDo</h1>
-      <h2 class="subtitle">Vue.Js & Spring Cloud</h2>
+      <h2 class="subtitle">Vue.Js & Spring Cloud</h2>      
     </div>
 
     <div class="hero-foot">
