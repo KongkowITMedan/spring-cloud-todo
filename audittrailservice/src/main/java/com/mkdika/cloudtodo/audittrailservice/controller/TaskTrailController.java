@@ -49,15 +49,17 @@ public class TaskTrailController {
     }
    
     @RequestMapping(method = GET, value = "/task/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getTrailByTask(@PathVariable Integer id) {
+    public ResponseEntity getTrailByTask(@PathVariable Integer id) throws InterruptedException {
         List<TaskTrail> list = repository.findByTaskId(id);
+        Thread.sleep(10000);
         return new ResponseEntity(list, HttpStatus.OK);
     }
    
     @RequestMapping(method = POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createAuditTrail(@Valid @RequestBody TaskTrail taskTrail) throws InterruptedException {
+        Thread.sleep(10000);
         repository.save(taskTrail);
-//        Thread.sleep(5000);
+        
         msgClient.emailNotification(new EmailDto(notificationEmail, "Task Changed " + String.valueOf(taskTrail.getChangeTime().getTime()), taskTrail.getMessage()));
         return new ResponseEntity(HttpStatus.OK);
     }
