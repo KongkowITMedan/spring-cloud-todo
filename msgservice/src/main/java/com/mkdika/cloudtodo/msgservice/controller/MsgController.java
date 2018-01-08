@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.bind.annotation.RestController;
-import io.swagger.annotations.ApiOperation;
 import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,11 +22,7 @@ public class MsgController {
     
     @Autowired
     private EmailService emailService;
-    
-    @ApiOperation(
-            value = "Create or Update Task.",
-            notes = "Not available.",
-            produces = "application/json")
+        
     @RequestMapping(method = {POST},value = "/email")
     public ResponseEntity sendEmail(@Valid @RequestBody EmailMessage emailMsg) throws EmailException {
         emailService.sendEmail(emailMsg);

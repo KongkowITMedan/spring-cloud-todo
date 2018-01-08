@@ -4,7 +4,7 @@ import com.mkdika.cloudtodo.todoservice.client.AuditTrailServiceClient;
 import com.mkdika.cloudtodo.todoservice.model.Task;
 import com.mkdika.cloudtodo.todoservice.model.dto.TrailDto;
 import com.mkdika.cloudtodo.todoservice.repository.TaskRepository;
-import io.swagger.annotations.ApiOperation;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
@@ -36,11 +36,7 @@ public class TaskController {
 
     @Autowired
     private AuditTrailServiceClient trailService;
-
-    @ApiOperation(
-            value = "Retrieve all Task.",
-            notes = "Not available.",
-            produces = "application/json")    
+    
     @RequestMapping(method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllTask() {
         List<Task> list = (List<Task>) repository.findAll();
@@ -61,11 +57,7 @@ public class TaskController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-    
-    @ApiOperation(
-            value = "Retrieve all Inprogress Task.",
-            notes = "Not available.",
-            produces = "application/json")    
+       
     @RequestMapping(method = GET, value = "/inprogress",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getInprogressTask() {
         List<Task> list = (List<Task>) repository.findByCompleteFalse();
@@ -86,11 +78,7 @@ public class TaskController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-    
-    @ApiOperation(
-            value = "Retrieve all Finished Task.",
-            notes = "Not available.",
-            produces = "application/json")    
+        
     @RequestMapping(method = GET, value = "/finish",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getFinishTask() {
         List<Task> list = (List<Task>) repository.findByCompleteTrue();
@@ -111,11 +99,7 @@ public class TaskController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-
-    @ApiOperation(
-            value = "Retrieve Task by ID.",
-            notes = "Not available.",
-            produces = "application/json")    
+   
     @RequestMapping(method = GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getTaskById(@PathVariable Integer id) {
         Task task = repository.findOne(id);
@@ -130,25 +114,17 @@ public class TaskController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-
-    @ApiOperation(
-            value = "Create or Update Task.",
-            notes = "Not available.",
-            produces = "application/json")    
+    
     @RequestMapping(method = {POST, PUT}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addUpdateTask(@Valid @RequestBody Task task) {
-        if (task.getId() != null) {
+    public ResponseEntity addUpdateTask(@Valid @RequestBody Task task) {        
+        if (task.getTid() != null) {            
             Task taskOld = repository.findOne(task.getTid());
-//            trailService.createTaskTrail(new TrailDto(task.getUid(), new Date(), compareOldNewTask(taskOld.get(), task)));
+            trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
         }
         repository.save(task);
-        return new ResponseEntity(task,HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
-
-    @ApiOperation(
-            value = "Delete Task by ID.",
-            notes = "Not available.",
-            produces = "application/json")    
+   
     @RequestMapping(method = DELETE, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteTask(@PathVariable Integer id) {
         Task task = repository.findOne(id);
@@ -159,11 +135,7 @@ public class TaskController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-
-    @ApiOperation(
-            value = "Retrieve all Trail by Task ID.",
-            notes = "Not available.",
-            produces = "application/json")    
+ 
     @RequestMapping(method = GET, value = "/{id}/trail", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getTrail(@PathVariable Integer id) {
         List<TrailDto> trails = trailService.getTaskTrail(id);

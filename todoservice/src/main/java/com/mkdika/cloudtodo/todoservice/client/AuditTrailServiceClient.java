@@ -18,11 +18,11 @@ public interface AuditTrailServiceClient {
 
     @RequestMapping(method = RequestMethod.GET,
             value = "/api/trail/task/{id}",
-            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)                       
     List<TrailDto> getTaskTrail(@PathVariable("id") Integer id);
     
     @RequestMapping(method = RequestMethod.POST,
             value = "/api/trail/",
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    void createTaskTrail(@RequestBody TrailDto TrailDto);
+    void createTaskTrail(@RequestBody TrailDto trailDto);
 }

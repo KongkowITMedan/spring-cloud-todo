@@ -1,11 +1,13 @@
 package com.mkdika.cloudtodo.audittrailservice.controller;
 
+import com.mkdika.cloudtodo.audittrailservice.client.MsgServiceClient;
 import com.mkdika.cloudtodo.audittrailservice.model.TaskTrail;
+import com.mkdika.cloudtodo.audittrailservice.model.dto.EmailDto;
 import com.mkdika.cloudtodo.audittrailservice.repository.TaskTrailRepository;
-import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +27,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/trail")
 @CrossOrigin(origins = "http://localhost:8080")
 public class TaskTrailController {
-        
+
     @Autowired
     private TaskTrailRepository repository;
 
-    @ApiOperation(
-            value = "Retrieve all audit trail data.",
-            notes = "Not available.",
-            produces = "application/json")
+    @Autowired
+    private MsgServiceClient msgClient;
+
+    @Value("${audittrail.notification.email}")
+    private String notificationEmail;
+
+    
     @RequestMapping(method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllTrail() {
         List<TaskTrail> list = (List<TaskTrail>) repository.findAll();
@@ -42,24 +47,18 @@ public class TaskTrailController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-    
-    @ApiOperation(
-            value = "Retrieve all audit trail data.",
-            notes = "Not available.",
-            produces = "application/json")
-    @RequestMapping(method = GET, value="/task/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+   
+    @RequestMapping(method = GET, value = "/task/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getTrailByTask(@PathVariable Integer id) {
         List<TaskTrail> list = repository.findByTaskId(id);
-        return new ResponseEntity(list, HttpStatus.OK);        
-    }   
-    
-    @ApiOperation(
-            value = "Create new audit trail log.",
-            notes = "Not available.",
-            produces = "application/json")
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+   
     @RequestMapping(method = POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity createAuditTrail(@Valid @RequestBody TaskTrail taskTrail) {
+    public ResponseEntity createAuditTrail(@Valid @RequestBody TaskTrail taskTrail) throws InterruptedException {
         repository.save(taskTrail);
+//        Thread.sleep(5000);
+        msgClient.emailNotification(new EmailDto(notificationEmail, "Task Changed " + String.valueOf(taskTrail.getChangeTime().getTime()), taskTrail.getMessage()));
         return new ResponseEntity(HttpStatus.OK);
     }
 }

@@ -18,14 +18,18 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 - Other Email Settings:
 	- Set the email config in `msg-service.properties` file, at `#todo email client setup` section.
 - __Vue Todo__ - Front End:
-	- [README](vue-todo/README.md)
+	- To run & build front end app, please refer to this [README](vue-todo/README.md).
 
 ### Local Endpoints & API Test
 - __Discovery Service__:
 	- [Web Panel](http://localhost:8761/), view eureka front page.
 	
+- __Monitoring Service__:
+	- [Todo Service Hystrix Dashboard](http://localhost:8100/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8121%2Fhystrix.stream&delay=1000&title=TodoService)
+	- [AudiTrail Service Hystrix Dashboard](http://localhost:8100/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8122%2Fhystrix.stream&delay=1000&title=AudiTrailService)
+	
 - __Todo Service__ (and other related services):	
-	- __Spring Boot Production Ready:__
+	- __Spring Boot Production Ready Endpoints:__
 		- [Information](http://localhost:8121/info), displays application information.
 		- [Environment](http://localhost:8121/env), displays environment properties from Spring.
 		- [Health](http://localhost:8121/health), shows app health information.
@@ -46,16 +50,21 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 	1. `configservice`
 	2. `discoveryservice`
 	3. `gatewayservice`
-	4. `audittrailservice`
-	5. `msgservice`
+	4. `msgservice`
+	5. `audittrailservice`	
 	6. `todoservice`
+	7. `Monitoringservice`
 
 ### References
 - Spring Boot
 	- [Spring Boot Production-ready Features Endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
 	- [Enabling Cross Origin Requests for a RESTful Web Service](https://spring.io/guides/gs/rest-service-cors/)	
 - Spring Cloud
-	- [Spring Cloud PiggyMetrics](https://github.com/sqshq/PiggyMetrics)
+	- [Spring Cloud PiggyMetrics - Example](https://github.com/sqshq/PiggyMetrics)
+- Spring Cloud Hystrix
+	- [A Guide to Spring Cloud Netflix Hystrix](http://www.baeldung.com/spring-cloud-netflix-hystrix)
+	- [Spring Cloud Hystrix example](https://exampledriven.wordpress.com/2016/07/05/spring-cloud-hystrix-example/)
+	- [CircuitBreaker Pattern](https://martinfowler.com/bliki/CircuitBreaker.html)
 - Spring AMQP
 	- [RabbitMQ Message Dispatching with Spring AMQP](http://www.baeldung.com/rabbitmq-spring-amqp)	
 	- [Event-Driven Microservices Using Spring Cloud Stream and RabbitMQ](https://dzone.com/articles/event-driven-microservices-using-spring-cloud-stre)

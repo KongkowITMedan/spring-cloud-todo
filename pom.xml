@@ -15,6 +15,7 @@
         <module>audittrailservice</module>    
         <module>msgservice</module>    
         <module>todoservice</module>    
+        <module>monitoringservice</module>    
                     
         <!--        <module>searchservice</module>   -->
     </modules>
