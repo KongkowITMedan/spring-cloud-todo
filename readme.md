@@ -4,9 +4,9 @@
 [![codecov](https://codecov.io/gh/KongkowITMedan/spring-cloud-todo/branch/master/graph/badge.svg)](https://codecov.io/gh/KongkowITMedan/spring-cloud-todo)
 [![codebeat badge](https://codebeat.co/badges/74889632-eba3-41bc-9c6f-9d68db38c2a1)](https://codebeat.co/projects/github-com-kongkowitmedan-spring-cloud-todo-master)
 
-These are the backend micro-services for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-todo).
+The backend service for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-todo) with [Spring Cloud](http://projects.spring.io/spring-cloud/) Stack Micro-services.
 
-### Prerequire & Library
+### Prerequire Installation
 - [Java 8 (JDK 8u131 or above)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - [Maven3](https://maven.apache.org/index.html)
 - [RabbitMQ](https://www.rabbitmq.com/)
@@ -18,8 +18,6 @@ These are the backend micro-services for [Vue Spring Cloud Todo](https://github.
 	- `TODO_EMAIL_PASSWORD` , email account password for send email notification.
 - Other Email Settings:
 	- Set the email config in `msg-service.properties` file, at `#todo email client setup` section.
-- __Vue Todo__ - Front End:
-	- To run & build front end app, please refer to this [README](vue-todo/README.md).
 
 ### Install & Run Application
 - Running the service Order:
@@ -30,6 +28,7 @@ These are the backend micro-services for [Vue Spring Cloud Todo](https://github.
 	5. `audittrailservice`	
 	6. `todoservice`
 	7. `Monitoringservice`	
+	8. `Vue-todo` (frontend), how to run refer to this [README](vue-todo/README.md).
 
 
 ### Local Endpoints & API Test
