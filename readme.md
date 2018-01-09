@@ -47,7 +47,7 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
     	- [Web Console](http://localhost:8121/h2-console/), open H2 web console.
     	
 - __RabbitMQ__:
-		- [RabbitMQ Management](http://localhost:15672), default login/password: `guest/guest`.
+	- [RabbitMQ Management](http://localhost:15672), default login/password: `guest/guest`.
 
 ### Install & Run Application
 - Running Application Order:
