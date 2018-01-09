@@ -4,12 +4,13 @@
 [![codecov](https://codecov.io/gh/KongkowITMedan/spring-cloud-todo/branch/master/graph/badge.svg)](https://codecov.io/gh/KongkowITMedan/spring-cloud-todo)
 [![codebeat badge](https://codebeat.co/badges/74889632-eba3-41bc-9c6f-9d68db38c2a1)](https://codebeat.co/projects/github-com-kongkowitmedan-spring-cloud-todo-master)
 
+These are the backend micro-services for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-todo).
 
-These are the backend services for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-todo).
-
-### Framework & Libraries
-- [Java 8 (JDK 8u131 or above)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-
+### Prerequire & Library
+	- [Java 8 (JDK 8u131 or above)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+	- [Maven3](https://maven.apache.org/index.html)
+	- [RabbitMQ](https://www.rabbitmq.com/)
+	- [NetBeans IDE 8.2](https://netbeans.org/) (optional)
 
 ### Local Settings
 - Export OS level Environment variable:
@@ -19,6 +20,17 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 	- Set the email config in `msg-service.properties` file, at `#todo email client setup` section.
 - __Vue Todo__ - Front End:
 	- To run & build front end app, please refer to this [README](vue-todo/README.md).
+
+### Install & Run Application
+- Running the service Order:
+	1. `configservice`
+	2. `discoveryservice`
+	3. `gatewayservice`
+	4. `msgservice`
+	5. `audittrailservice`	
+	6. `todoservice`
+	7. `Monitoringservice`	
+
 
 ### Local Endpoints & API Test
 - __Discovery Service__:
@@ -49,19 +61,19 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 - __RabbitMQ__:
 	- [RabbitMQ Management](http://localhost:15672), default login/password: `guest/guest`.
 
-### Install & Run Application
-- Running Application Order:
-	1. `configservice`
-	2. `discoveryservice`
-	3. `gatewayservice`
-	4. `msgservice`
-	5. `audittrailservice`	
-	6. `todoservice`
-	7. `Monitoringservice`
 	
 ### Images & Graph
 - Hystrix Dashboard Diagram Information
 ![Imgur](https://i.imgur.com/NESKMta.png)	
+
+
+### Online Demo
+coming soon...
+
+
+### Documentation
+- [KIT Medan #7 Meetup Slide]()
+
 
 ### References
 - Spring Boot
