@@ -7,10 +7,10 @@
 These are the backend micro-services for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-todo).
 
 ### Prerequire & Library
-	- [Java 8 (JDK 8u131 or above)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-	- [Maven3](https://maven.apache.org/index.html)
-	- [RabbitMQ](https://www.rabbitmq.com/)
-	- [NetBeans IDE 8.2](https://netbeans.org/) (optional)
+- [Java 8 (JDK 8u131 or above)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [Maven3](https://maven.apache.org/index.html)
+- [RabbitMQ](https://www.rabbitmq.com/)
+- [NetBeans IDE 8.2](https://netbeans.org/) (optional)
 
 ### Local Settings
 - Export OS level Environment variable:
