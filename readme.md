@@ -65,9 +65,11 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 
 ### References
 - Spring Boot
+	- [Intro to Spring Boot](http://www.baeldung.com/spring-boot-start)
 	- [Spring Boot Production-ready Features Endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
 	- [Enabling Cross Origin Requests for a RESTful Web Service](https://spring.io/guides/gs/rest-service-cors/)	
 - Spring Cloud
+	- [Introducing Spring Cloud](https://spring.io/blog/2014/06/03/introducing-spring-cloud)
 	- [Spring Cloud PiggyMetrics - Example](https://github.com/sqshq/PiggyMetrics)
 - Spring Cloud Config
 	- [Microservices Configuration With Spring Cloud Config](https://piotrminkowski.wordpress.com/2017/07/17/microservices-configuration-with-spring-cloud-config/)
