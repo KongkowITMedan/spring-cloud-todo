@@ -27,6 +27,7 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 - __Monitoring Service__:
 	- [Todo Service Hystrix Dashboard](http://localhost:8100/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8121%2Fhystrix.stream&delay=1000&title=TodoService)
 	- [AudiTrail Service Hystrix Dashboard](http://localhost:8100/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8122%2Fhystrix.stream&delay=1000&title=AudiTrailService)
+	- [Turbine Dashboard](http://localhost:8100/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8100%2Fturbine.stream&delay=100&title=TurbineMonitor)
 	
 - __Todo Service__ (and other related services):	
 	- __Spring Boot Production Ready Endpoints:__
@@ -44,6 +45,9 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
     	- [Web UI](http://localhost:8121/swagger-ui.html), view registered web end-point.
 	- __H2:__
     	- [Web Console](http://localhost:8121/h2-console/), open H2 web console.
+    	
+- __RabbitMQ__:
+		- [RabbitMQ Management](http://localhost:15672), default login/password: `guest/guest`.
 
 ### Install & Run Application
 - Running Application Order:
@@ -54,6 +58,10 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 	5. `audittrailservice`	
 	6. `todoservice`
 	7. `Monitoringservice`
+	
+### Images & Graph
+- Hystrix Dashboard Diagram Information
+![Imgur](https://i.imgur.com/NESKMta.png)	
 
 ### References
 - Spring Boot
@@ -61,10 +69,15 @@ These are the backend services for [Vue Spring Cloud Todo](https://github.com/mk
 	- [Enabling Cross Origin Requests for a RESTful Web Service](https://spring.io/guides/gs/rest-service-cors/)	
 - Spring Cloud
 	- [Spring Cloud PiggyMetrics - Example](https://github.com/sqshq/PiggyMetrics)
+- Spring Cloud Config
+	- [Microservices Configuration With Spring Cloud Config](https://piotrminkowski.wordpress.com/2017/07/17/microservices-configuration-with-spring-cloud-config/)
+	- [Refreshable Configuration using Spring Cloud Config Server](http://tech.asimio.net/2017/02/02/Refreshable-Configuration-using-Spring-Cloud-Config-Server-Spring-Cloud-Bus-RabbitMQ-and-Git.html)
 - Spring Cloud Hystrix
 	- [A Guide to Spring Cloud Netflix Hystrix](http://www.baeldung.com/spring-cloud-netflix-hystrix)
 	- [Spring Cloud Hystrix example](https://exampledriven.wordpress.com/2016/07/05/spring-cloud-hystrix-example/)
 	- [CircuitBreaker Pattern](https://martinfowler.com/bliki/CircuitBreaker.html)
+- Spring Cloud Ribbon
+	- [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
 - Spring AMQP
 	- [RabbitMQ Message Dispatching with Spring AMQP](http://www.baeldung.com/rabbitmq-spring-amqp)	
 	- [Event-Driven Microservices Using Spring Cloud Stream and RabbitMQ](https://dzone.com/articles/event-driven-microservices-using-spring-cloud-stre)

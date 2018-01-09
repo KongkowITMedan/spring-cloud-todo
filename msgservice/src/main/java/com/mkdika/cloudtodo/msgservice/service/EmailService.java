@@ -6,6 +6,7 @@ import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
  * @author Maikel Chandika <mkdika@gmail.com>
  */
 @Service
+@RefreshScope
 public class EmailService {
 
     @Value("${todo.email.host}")
@@ -33,6 +35,10 @@ public class EmailService {
     private Email email;
 
     public boolean sendEmail(EmailMessage emailMsg) throws EmailException {
+        
+        System.out.println(">>> Port: " + emailPort);
+        System.out.println(">>> Host: " + emailHost);
+        System.out.println(">>> From: " + emailFrom);
 
         email = new SimpleEmail();
         email.setAuthenticator(new DefaultAuthenticator(emailUsername, emailPassword));
