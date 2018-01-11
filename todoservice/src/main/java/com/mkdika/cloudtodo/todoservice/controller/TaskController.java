@@ -91,8 +91,7 @@ public class TaskController {
                 trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
             }
         }
-        repository.save(task);
-        addResources(task);
+        repository.save(task);        
         return new ResponseEntity(task, HttpStatus.OK);
     }
 

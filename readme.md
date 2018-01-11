@@ -18,6 +18,7 @@ The backend service for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-to
 	- `TODO_EMAIL_PASSWORD` , email account password for send email notification.
 - Other Email Settings:
 	- Set the email config in `msg-service.properties` file, at `#todo email client setup` section.
+	- set the destination email notification address in `audittrail-service.properties` file, at `audittrail.notification.email`.	
 
 ### Install & Run Application
 - Running the service Order:
