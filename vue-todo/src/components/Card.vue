@@ -12,6 +12,7 @@
         </template>
         <template v-else-if="task.complete">
           <a @click="redoTask" class="card-footer-item">Redo</a>
+          <a @click="taskTrail" class="card-footer-item">Trail</a>
         </template>
         <template v-else>
           <a @click="editCard" class="card-footer-item">Edit</a>
@@ -99,16 +100,16 @@ export default {
         axios.get(href)
           .then(res => {
             var message = '<table>' +
-                          '<tr><th>Change Time</th><th>Message</th></tr>' +
+                          '<tr><th style="padding: 0.3em">Change Time</th><th>Message</th></tr>' +
                           res.data.map(x => '<tr>' +
-                            '<td>' + x.changeTime + '</td>' +
-                            '<td>' + x.message + '</td>' + 
+                            '<td style="padding: 0.3em">' + new Date(x.changeTime) + '</td>' +
+                            '<td style="padding: 0.3em">' + x.message + '</td>' + 
                             '</tr>').join('') +
                           '</table>'
             this.showMessage(task.content, message)
           })
           .catch(err => {
-            console.log(err)
+            this.showMessage(task.content, err)
           })
       } catch (e) {
         console.log(e)
