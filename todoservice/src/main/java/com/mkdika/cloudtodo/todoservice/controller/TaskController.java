@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Link;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,95 +35,67 @@ public class TaskController {
 
     @Autowired
     private AuditTrailServiceClient trailService;
-    
+
     @RequestMapping(method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllTask() {
         List<Task> list = (List<Task>) repository.findAll();
         if (list.size() > 0) {
-            list = list.stream().map(l -> {
-                l.add(linkTo(TaskController.class)
-                        .slash(l.getTid())
-                        .slash("trail")
-                        .withRel("trail"));
-                l.add(linkTo(TaskController.class)
-                        .slash(l.getTid())
-                        .withSelfRel());
-                return l;
-            }).collect(Collectors.toList());
-
+            list = list.stream().map(this::addResources)
+                    .collect(Collectors.toList());
             return new ResponseEntity(list, HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-       
-    @RequestMapping(method = GET, value = "/inprogress",produces = MediaType.APPLICATION_JSON_VALUE)
+
+    @RequestMapping(method = GET, value = "/inprogress", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getInprogressTask() {
         List<Task> list = (List<Task>) repository.findByCompleteFalse();
         if (list.size() > 0) {
-            list = list.stream().map(l -> {
-                l.add(linkTo(TaskController.class)
-                        .slash(l.getTid())
-                        .slash("trail")
-                        .withRel("trail"));
-                l.add(linkTo(TaskController.class)
-                        .slash(l.getTid())
-                        .withSelfRel());
-                return l;
-            }).collect(Collectors.toList());
-
+            list = list.stream().map(this::addResources)
+                    .collect(Collectors.toList());
             return new ResponseEntity(list, HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-        
-    @RequestMapping(method = GET, value = "/finish",produces = MediaType.APPLICATION_JSON_VALUE)
+
+    @RequestMapping(method = GET, value = "/finish", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getFinishTask() {
         List<Task> list = (List<Task>) repository.findByCompleteTrue();
         if (list.size() > 0) {
-            list = list.stream().map(l -> {
-                l.add(linkTo(TaskController.class)
-                        .slash(l.getTid())
-                        .slash("trail")
-                        .withRel("trail"));
-                l.add(linkTo(TaskController.class)
-                        .slash(l.getTid())
-                        .withSelfRel());
-                return l;
-            }).collect(Collectors.toList());
-
+            list = list.stream().map(this::addResources)
+                    .collect(Collectors.toList());
             return new ResponseEntity(list, HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-   
+
     @RequestMapping(method = GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getTaskById(@PathVariable Integer id) {
         Task task = repository.findOne(id);
         if (task != null) {
-            Link trailLink = linkTo(TaskController.class)
-                    .slash(task.getTid())
-                    .slash("trail")
-                    .withRel("trail");
-            task.add(trailLink);
+            addResources(task);
             return new ResponseEntity(task, HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @RequestMapping(method = {POST, PUT}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addUpdateTask(@Valid @RequestBody Task task) {        
-        if (task.getTid() != null) {            
+    public ResponseEntity addUpdateTask(@Valid @RequestBody Task task) {
+        if (task.getTid() != null) {
             Task taskOld = repository.findOne(task.getTid());
-            if (taskOld != null) trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
+            if (taskOld != null && !taskOld.getContent().isEmpty()) {
+                trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
+            }
         }
         repository.save(task);
-        return new ResponseEntity(task,HttpStatus.OK);
+        addResources(task);
+        return new ResponseEntity(task, HttpStatus.OK);
     }
-   
+
     @RequestMapping(method = DELETE, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteTask(@PathVariable Integer id) {
         Task task = repository.findOne(id);
@@ -135,7 +106,7 @@ public class TaskController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
- 
+
     @RequestMapping(method = GET, value = "/{id}/trail", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getTrail(@PathVariable Integer id) {
         List<TrailDto> trails = trailService.getTaskTrail(id);
@@ -144,6 +115,17 @@ public class TaskController {
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
+    }
+
+    private Task addResources(Task task) {
+        task.add(linkTo(TaskController.class)
+                .slash(task.getTid())
+                .slash("trail")
+                .withRel("trail"));
+        task.add(linkTo(TaskController.class)
+                .slash(task.getTid())
+                .withSelfRel());
+        return task;
     }
 
     private String compareTask(Task taskOld, Task taskNew) {
@@ -155,16 +137,20 @@ public class TaskController {
             sb.append(taskNew.getContent());
         }
 
-        if (taskNew.getEditable().compareTo(taskOld.getEditable()) != 0) {            
-            if (sb.length() > 0) sb.append(", ");
+        if (taskNew.getEditable().compareTo(taskOld.getEditable()) != 0) {
+            if (sb.length() > 0) {
+                sb.append(", ");
+            }
             sb.append("Editable changed from ");
             sb.append(taskOld.getEditable());
             sb.append(" to ");
             sb.append(taskNew.getEditable());
         }
 
-        if (taskNew.getComplete().compareTo(taskOld.getComplete()) != 0) {            
-            if (sb.length() > 0) sb.append(", ");
+        if (taskNew.getComplete().compareTo(taskOld.getComplete()) != 0) {
+            if (sb.length() > 0) {
+                sb.append(", ");
+            }
             sb.append("Complete changed from ");
             sb.append(taskOld.getComplete());
             sb.append(" to ");
