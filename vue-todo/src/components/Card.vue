@@ -109,10 +109,10 @@ export default {
             this.showMessage(task.content, message)
           })
           .catch(err => {
-            this.showMessage(task.content, err)
+            this.showMessage(task.content, 'Empty trail')
           })
       } catch (e) {
-        console.log(e)
+        this.showMessage(task.content, 'Empty trail')
       }
     }
   },
