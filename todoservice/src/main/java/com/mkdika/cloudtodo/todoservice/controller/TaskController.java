@@ -119,7 +119,7 @@ public class TaskController {
     public ResponseEntity addUpdateTask(@Valid @RequestBody Task task) {        
         if (task.getTid() != null) {            
             Task taskOld = repository.findOne(task.getTid());
-            trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
+            if (taskOld != null) trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
         }
         repository.save(task);
         return new ResponseEntity(task,HttpStatus.OK);
