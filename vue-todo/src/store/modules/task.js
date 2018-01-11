@@ -70,11 +70,11 @@ export default {
     },
 
     newTask (context) {
-      axios.post('http://localhost:8121/api/todo', {content: ''})
+      axios.post('http://localhost:8121/api/todo', {content: '',
+          editable: true,
+          complete: false})
         .then(res => {         
           var task = res.data
-          task.editable = true
-          task.complete = false
           context.commit('loadTask', task)
         })
         .catch(err => {
