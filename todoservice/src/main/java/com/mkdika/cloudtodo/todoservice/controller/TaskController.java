@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -88,8 +89,10 @@ public class TaskController {
         if (task.getTid() != null) {
             Task taskOld = repository.findOne(task.getTid());
             if (taskOld != null && !taskOld.getContent().isEmpty()) {
-                trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
+                trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));                
             }
+        }else {
+            addResources(task);
         }
         repository.save(task);        
         return new ResponseEntity(task, HttpStatus.OK);
@@ -117,13 +120,16 @@ public class TaskController {
     }
 
     private Task addResources(Task task) {
-        task.add(linkTo(TaskController.class)
+        Link trail = linkTo(TaskController.class)
                 .slash(task.getTid())
                 .slash("trail")
-                .withRel("trail"));
-        task.add(linkTo(TaskController.class)
+                .withRel("trail");
+                                        
+        task.add(trail);
+        Link self = linkTo(TaskController.class)
                 .slash(task.getTid())
-                .withSelfRel());
+                .withSelfRel();
+        task.add(self);              
         return task;
     }
 
