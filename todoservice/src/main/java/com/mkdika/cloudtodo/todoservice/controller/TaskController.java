@@ -89,12 +89,14 @@ public class TaskController {
         if (task.getTid() != null) {
             Task taskOld = repository.findOne(task.getTid());
             if (taskOld != null && !taskOld.getContent().isEmpty()) {
-                trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));                
+                trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
+                repository.save(task);
             }
-        }else {
-            addResources(task);
+        } else {
+            repository.save(task);
+            
         }
-        repository.save(task);        
+        addResources(task);
         return new ResponseEntity(task, HttpStatus.OK);
     }
 
@@ -124,12 +126,12 @@ public class TaskController {
                 .slash(task.getTid())
                 .slash("trail")
                 .withRel("trail");
-                                        
+
         task.add(trail);
         Link self = linkTo(TaskController.class)
                 .slash(task.getTid())
                 .withSelfRel();
-        task.add(self);              
+        task.add(self);
         return task;
     }
 
