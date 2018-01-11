@@ -122,7 +122,7 @@ public class TaskController {
             trailService.createTaskTrail(new TrailDto(task.getTid(), new Date(), compareTask(taskOld, task)));
         }
         repository.save(task);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(task,HttpStatus.OK);
     }
    
     @RequestMapping(method = DELETE, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -155,15 +155,17 @@ public class TaskController {
             sb.append(taskNew.getContent());
         }
 
-        if (taskNew.getEditable().compareTo(taskOld.getEditable()) != 0) {
-            sb.append(", Editable changed from ");
+        if (taskNew.getEditable().compareTo(taskOld.getEditable()) != 0) {            
+            if (sb.length() > 0) sb.append(", ");
+            sb.append("Editable changed from ");
             sb.append(taskOld.getEditable());
             sb.append(" to ");
             sb.append(taskNew.getEditable());
         }
 
-        if (taskNew.getComplete().compareTo(taskOld.getComplete()) != 0) {
-            sb.append(", Complete changed from ");
+        if (taskNew.getComplete().compareTo(taskOld.getComplete()) != 0) {            
+            if (sb.length() > 0) sb.append(", ");
+            sb.append("Complete changed from ");
             sb.append(taskOld.getComplete());
             sb.append(" to ");
             sb.append(taskNew.getComplete());

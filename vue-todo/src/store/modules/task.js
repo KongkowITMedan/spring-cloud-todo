@@ -2,7 +2,7 @@ import _ from 'lodash'
 import axios from 'axios'
 
 function commitToBackend (task, state) {
-  axios.put('http://localhost:8000/api/todo', task, {headers: {'Content-Type': 'text/json'}})
+  axios.put('http://localhost:8121/api/todo', task, {headers: {'Content-Type': 'text/json'}})
     .then(res => {      
       Object.assign(state, res.data)
     })
@@ -12,7 +12,7 @@ function commitToBackend (task, state) {
 }
 
 function addToBackend(task, state) {
-  axios.post('http://localhost:8000/api/todo', task, {headers: {'Content-Type': 'text/json'}})
+  axios.post('http://localhost:8121/api/todo', task, {headers: {'Content-Type': 'text/json'}})
     .then(res => {     
       Object.assign(state, res.data)
       state.editable = true
@@ -60,7 +60,7 @@ export default {
 
   actions: {
     loadInitialTasks (context) {
-      axios.get('http://localhost:8000/api/todo')
+      axios.get('http://localhost:8121/api/todo')
         .then(res => {         
           res.data.forEach(task => { context.commit('loadTask', task) })
         })
@@ -70,7 +70,7 @@ export default {
     },
 
     newTask (context) {
-      axios.post('http://localhost:8000/api/todo', {content: ''})
+      axios.post('http://localhost:8121/api/todo', {content: ''})
         .then(res => {         
           var task = res.data
           task.editable = true
@@ -85,7 +85,7 @@ export default {
     saveTask (context, task) {     
       var newTask = Object.assign({}, task)      
       newTask.editable = false
-      axios.put('http://localhost:8000/api/todo', newTask)
+      axios.put('http://localhost:8121/api/todo', newTask)
         .then(res => {         
           context.commit('updateContent', res.data)
         })
