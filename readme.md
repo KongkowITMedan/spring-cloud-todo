@@ -23,13 +23,14 @@ The backend service for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-to
 ### Install & Run Application
 - Running the service Order:
 	1. `configservice`
-	2. `discoveryservice`
-	3. `gatewayservice`
-	4. `msgservice`
-	5. `audittrailservice`	
-	6. `todoservice`
-	7. `Monitoringservice`	
-	8. `Vue-todo` (frontend), how to run refer to this [README](vue-todo/README.md).
+	2. `discoveryservice`	
+	3. `msgservice`
+	4. `audittrailservice`	
+	5. `todoservice`
+	6. `gatewayservice`
+	7. `Vue-todo` (frontend), how to run refer to this [README](vue-todo/README.md).
+	8. `audittrailservice2`, __optional__ for load-ballance & failed-over only.
+	9. `Monitoringservice`, __optional__ to activate `Hystrix Dashboard`.
 
 
 ### Local Endpoints & API Test
@@ -92,6 +93,7 @@ coming soon...
 	- [CircuitBreaker Pattern](https://martinfowler.com/bliki/CircuitBreaker.html)
 - Spring Cloud Ribbon
 	- [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
+	- [Load Balancer with Ribbon/Feign](https://dzone.com/articles/spring-cloud-netflix-load-balancer-with-ribbonfeig)
 - Spring AMQP
 	- [RabbitMQ Message Dispatching with Spring AMQP](http://www.baeldung.com/rabbitmq-spring-amqp)	
 	- [Event-Driven Microservices Using Spring Cloud Stream and RabbitMQ](https://dzone.com/articles/event-driven-microservices-using-spring-cloud-stre)

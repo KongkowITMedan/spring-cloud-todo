@@ -13,10 +13,9 @@
         <module>discoveryservice</module>
         <module>gatewayservice</module>       
         <module>audittrailservice</module>    
+        <module>audittrailservice2</module>    
         <module>msgservice</module>    
         <module>todoservice</module>    
-        <module>monitoringservice</module>    
-                    
-        <!--        <module>searchservice</module>   -->
+        <module>monitoringservice</module>        
     </modules>
 </project>

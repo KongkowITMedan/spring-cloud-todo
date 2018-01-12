@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmailDto {
+public class EmailMessage {
     String toAddress;
     String subject;
     String content;

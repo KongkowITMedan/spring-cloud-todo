@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
 @RefreshScope
 public class EmailService {
 
+    @Value("${todo.email.notice.enabled}")
+    private boolean noticeEnabled;
+
     @Value("${todo.email.host}")
     private String emailHost;
 
@@ -34,25 +37,25 @@ public class EmailService {
 
     private Email email;
 
-    public boolean sendEmail(EmailMessage emailMsg) throws EmailException {
-        
+    public void sendEmail(EmailMessage emailMsg) throws EmailException {
+        System.out.println(">>> Notice Enabled: " + noticeEnabled);
         System.out.println(">>> Port: " + emailPort);
         System.out.println(">>> Host: " + emailHost);
         System.out.println(">>> From: " + emailFrom);
+        if (noticeEnabled) {
 
-        email = new SimpleEmail();
-        email.setAuthenticator(new DefaultAuthenticator(emailUsername, emailPassword));
-        email.setDebug(true);
-        email.setHostName(emailHost);
-        email.setSmtpPort(emailPort);
-        email.setSSLOnConnect(true);
-        email.setFrom(emailUsername, "SysbotTodo");
+            email = new SimpleEmail();
+            email.setAuthenticator(new DefaultAuthenticator(emailUsername, emailPassword));
+            email.setDebug(true);
+            email.setHostName(emailHost);
+            email.setSmtpPort(emailPort);
+            email.setSSLOnConnect(true);
+            email.setFrom(emailUsername, "SysbotTodo");
 
-        email.addTo(emailMsg.getToAddress());
-        email.setSubject(emailMsg.getSubject());
-        email.setMsg(emailMsg.getContent());
-        email.send();
-        System.out.println(">>>>>>>>>> Mail to '" + emailMsg.getToAddress() + "' has been sent!");
-        return true;
+            email.addTo(emailMsg.getToAddress());
+            email.setSubject(emailMsg.getSubject());
+            email.setMsg(emailMsg.getContent());
+            email.send();
+        }
     }
 }

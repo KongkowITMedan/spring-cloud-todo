@@ -27,5 +27,5 @@ public class MsgController {
     public ResponseEntity sendEmail(@Valid @RequestBody EmailMessage emailMsg) throws EmailException {
         emailService.sendEmail(emailMsg);
         return new ResponseEntity(HttpStatus.OK);
-    }    
+    }            
 }

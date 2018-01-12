@@ -26,8 +26,9 @@ public class GatewayserviceApplication {
         config.setAllowCredentials(true);
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("*", config);
+        config.addAllowedMethod("*");        
+        source.registerCorsConfiguration("*", config);    
+        
         
         return new CorsFilter(source);
     }

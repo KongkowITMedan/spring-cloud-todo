@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.integration.support.MessageBuilder;
+import org.springframework.messaging.Message;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.integration.support.MessageBuilder;
-import org.springframework.messaging.Message;
 
 /**
  *
@@ -40,9 +40,9 @@ public class TaskTrailController {
 
     @Value("${audittrail.notification.email}")
     private String notificationEmail;
-
+    
     private final OutputChannel channel;
-
+    
     @RequestMapping(method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllTrail() {
         List<TaskTrail> list = (List<TaskTrail>) repository.findAll();
@@ -52,16 +52,16 @@ public class TaskTrailController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-
+   
     @RequestMapping(method = GET, value = "/task/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getTrailByTask(@PathVariable Integer id) throws InterruptedException {
         List<TaskTrail> list = repository.findByTaskId(id);
         return new ResponseEntity(list, HttpStatus.OK);
     }
-
+   
     @RequestMapping(method = POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createAuditTrail(@Valid @RequestBody TaskTrail taskTrail) throws InterruptedException {
-        repository.save(taskTrail);
+         repository.save(taskTrail);
         // if use blocking/synchronous method with Feign client call.
         // msgClient.emailNotification(new EmailDto(notificationEmail, "Task Changed " + String.valueOf(taskTrail.getChangeTime().getTime()), taskTrail.getMessage()));
 
