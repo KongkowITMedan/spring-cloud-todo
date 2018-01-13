@@ -75,7 +75,7 @@ coming soon...
 
 
 ### Documentation
-- [KIT Medan #7 Meetup Slide]()
+- [KIT Medan #7 Meetup Slide](https://goo.gl/gnLSpk)
 
 
 ### References
