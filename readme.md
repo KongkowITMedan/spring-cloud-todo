@@ -6,6 +6,8 @@
 
 The backend service for [Vue Spring Cloud Todo](https://github.com/mkdika/vue-todo) with [Spring Cloud](http://projects.spring.io/spring-cloud/) Stack Micro-services.
 
+![](/spring-cloud-todo.gif)
+
 ### Prerequire Installation
 - [Java 8 (JDK 8u131 or above)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - [Maven3](https://maven.apache.org/index.html)
@@ -100,6 +102,7 @@ coming soon...
 - Spring Cloud Stream	
 	- [Introduction to Spring Cloud Stream](http://www.baeldung.com/spring-cloud-stream)
 	- [Spring Cloud Stream Reference Guide](https://docs.spring.io/spring-cloud-stream/docs/current/reference/htmlsingle/)
+	- [Spring Cloud Stream - Example](https://github.com/ignacioSuay/spring-stream)
 - Spring Data & Elasticsearch:
 	- [The Persistence Layer with Spring Data JPA](http://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
 	- [Introduction to Spring Data Elasticsearch](http://www.baeldung.com/spring-data-elasticsearch-tutorial)
