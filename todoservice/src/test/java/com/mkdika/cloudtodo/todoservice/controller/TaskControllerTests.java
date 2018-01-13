@@ -90,7 +90,7 @@ public class TaskControllerTests {
         mockMvc.perform(get("/api/todo/2"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.content", is("Bayar Indihome")));
+                .andExpect(jsonPath("$.content", is("Bersihkan taman")));
         
         
     }
